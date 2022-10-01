@@ -8,6 +8,7 @@ import "./styles/styles.scss";
 import Navbar from "./components/Navbar/Navbar";
 import VideoSection from "./components/VideoSection/VideoSection";
 import CommentsSection from "./components/CommentsSection/CommentsSection";
+import SuggestionsSection from "./components/SuggestionsSection/SuggestionsSection";
 
 const App = () => {
   const [currentVideo, setCurrentVideo] = useState(VideoDetails[0]);
@@ -16,6 +17,7 @@ const App = () => {
       <Navbar />
       <VideoSection video={currentVideo} />
       <CommentsSection video={currentVideo} />
+      <SuggestionsSection />
     </>
   );
 };

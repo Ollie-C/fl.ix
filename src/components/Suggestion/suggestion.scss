@@ -1,0 +1,20 @@
+@use "../../styles/partials/variables" as *;
+
+.suggestions {
+  &__card {
+    display: flex;
+    padding: 0.5rem 0;
+  }
+
+  &__image {
+    background-color: $primary-silver;
+    padding: 4rem 6rem;
+    margin-right: 1.6rem;
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}
