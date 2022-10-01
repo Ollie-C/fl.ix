@@ -1,0 +1,40 @@
+.header {
+  //FIXED
+  padding: 1.6rem;
+  //CUSTOM
+  //   position: sticky;
+  //   top: 0;
+  //   z-index: 3;
+  display: flex;
+  align-items: center;
+}
+
+.nav {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+
+  &__logo-container {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  &__search {
+    flex-grow: 1;
+    margin-bottom: 1rem;
+  }
+
+  &__avatar {
+    margin-left: 2rem;
+    @media (max-width: 328px) {
+      display: none;
+    }
+  }
+
+  &__button {
+    margin-top: 1rem;
+    width: 100%;
+  }
+}
