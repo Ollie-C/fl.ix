@@ -1,0 +1,50 @@
+@use "../../styles/partials/variables" as *;
+
+.description {
+  &__card {
+    //CUSTOM
+
+    padding: 1.6rem 0;
+    &--middle {
+      display: flex;
+      justify-content: flex-start;
+      //*FIX*
+      border-bottom: 2px solid $secondary-silver;
+      border-top: 2px solid $secondary-silver;
+    }
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &__container--left {
+    margin-right: 8rem;
+  }
+
+  &__header {
+    //FIXED
+    font-size: 2.8rem;
+    line-height: 4rem;
+    font-weight: 700;
+    //CUSTOM
+  }
+
+  &__counter {
+    display: flex;
+  }
+
+  &__icon {
+    margin-right: 5px;
+  }
+
+  &__author {
+    font-weight: bold;
+  }
+
+  &__date {
+    margin-top: 1.5rem;
+  }
+}

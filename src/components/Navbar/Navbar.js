@@ -1,5 +1,5 @@
+import React from "react";
 import logo from "../../assets/Logo/BrainFlix-logo.svg";
-//import "../../styles/styles.scss";
 import "./navbar.scss";
 
 const Navbar = () => {
