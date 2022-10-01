@@ -1,8 +1,16 @@
+import { useState } from "react";
 import React from "react";
 import logo from "../../assets/Logo/BrainFlix-logo.svg";
 import "./navbar.scss";
 
 const Navbar = () => {
+  //Toggle class handler
+  const [isActive, setActive] = useState(false);
+  const toggleClass = () => {
+    setActive(!isActive);
+    console.log(isActive);
+  };
+
   return (
     <header className="header">
       <nav className="nav">
@@ -14,7 +22,10 @@ const Navbar = () => {
           />
         </a>
         <input
-          className="nav__search global__input"
+          className={`nav__search global__input ${
+            isActive ? "global__input--active" : null
+          }`}
+          onClick={toggleClass}
           placeholder="Search"
         ></input>
         <div className="nav__avatar global__avatar global__avatar--photo"></div>

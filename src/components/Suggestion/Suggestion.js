@@ -7,6 +7,7 @@ const Suggestion = ({ video, suggestedVideoClickHandler }) => {
         className="suggestions__card"
         onClick={() => {
           suggestedVideoClickHandler(video.id);
+          window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
         }}
       >
         <img

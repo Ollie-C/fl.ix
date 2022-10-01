@@ -1,6 +1,8 @@
+@use "../../styles/partials/variables" as *;
+
 .header {
   //FIXED
-  padding: 1.6rem;
+  padding: $mobile-padding;
   //CUSTOM
   //   position: sticky;
   //   top: 0;

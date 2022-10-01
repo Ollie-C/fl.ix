@@ -1,8 +1,8 @@
 @use "../../styles/partials/variables" as *;
 
 .suggestions {
-  padding: 0 1.6rem;
+  padding: 0 $mobile-padding;
   &__header {
-    padding: 1.6rem 0;
+    padding: $mobile-padding 0;
   }
 }
