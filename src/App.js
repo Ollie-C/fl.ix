@@ -17,7 +17,7 @@ const App = () => {
       <Navbar />
       <VideoSection video={currentVideo} />
       <CommentsSection video={currentVideo} />
-      <SuggestionsSection />
+      <SuggestionsSection video={currentVideo} />
     </>
   );
 };

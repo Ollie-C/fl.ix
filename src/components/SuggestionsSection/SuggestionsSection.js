@@ -1,14 +1,18 @@
 import "./suggestionssection.scss";
 import Suggestion from "../Suggestion/Suggestion.js";
-// import VideoShorts from "../../assets/Data/videos.json";
+import sideVideos from "../../assets/Data/videos.json";
 
-const SuggestionsSection = () => {
-  //   const [currentVideo, setCurrentVideo] = useState(VideoShorts[0]);
+const SuggestionsSection = ({ video }) => {
+  const filteredVideos = sideVideos.filter((sideVideo) => {
+    return sideVideo.id !== video.id;
+  });
   return (
     <section className="suggestions">
       <p className="suggestions__header">NEXT VIDEOS</p>
       <ul className="suggestions__list">
-        <Suggestion />
+        {filteredVideos.map((video) => {
+          return <Suggestion key={video.id} video={video} />;
+        })}
       </ul>
     </section>
   );
