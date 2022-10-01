@@ -8,16 +8,16 @@ const CommentsForm = () => {
       </div>
       <div className="comment-card__right">
         <form className="comments__form">
-          <label className="comments__label" htmlFor="">
+          <label className="comments__label" htmlFor="addcomment">
             JOIN THE CONVERSATION
           </label>
           <textarea
             className="comments__input global__input"
-            name=""
-            id=""
+            name="addcomment"
+            id="addcomment"
             placeholder="Add a new comment"
           ></textarea>
-          <button className="comment__button global__button">COMMENT</button>
+          <button className="comments__button global__button">COMMENT</button>
         </form>
       </div>
     </article>

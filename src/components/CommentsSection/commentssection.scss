@@ -3,14 +3,24 @@
 .comments {
   //FIXED
   padding: 0 1.6rem;
-  &__input {
-    height: 10rem;
-    margin-bottom: 1.6rem;
+
+  &__label {
+    font-size: 1.4rem;
+    color: $primary-silver;
   }
 
   &__input,
   &__button {
     width: 100%;
+  }
+
+  &__input {
+    height: 10rem;
+    margin: 0.5rem 0;
+  }
+
+  &__button {
+    margin-top: 1rem;
   }
 
   &__name {
