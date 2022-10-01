@@ -1,0 +1,39 @@
+@use "../../styles/partials/variables" as *;
+
+.comments {
+  //FIXED
+  padding: 0 1.6rem;
+  &__input {
+    height: 10rem;
+    margin-bottom: 1.6rem;
+  }
+
+  &__input,
+  &__button {
+    width: 100%;
+  }
+
+  &__name {
+    font-weight: bold;
+  }
+}
+
+.comment-card {
+  display: flex;
+  padding: 1.6rem 0;
+  border-bottom: 2px solid $secondary-silver;
+
+  &__left {
+    margin-right: 1.6rem;
+  }
+
+  &__right {
+    width: 100%;
+  }
+}
+
+.name-wrapper {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 1.6rem;
+}
