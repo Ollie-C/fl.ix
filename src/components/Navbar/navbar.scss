@@ -1,4 +1,5 @@
 @use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
 
 .header {
   //FIXED
@@ -9,23 +10,36 @@
   //   z-index: 3;
   display: flex;
   align-items: center;
+  @include tablet {
+    padding: 1.6rem $tablet-padding;
+  }
 }
 
 .nav {
-  display: flex;
-  flex-direction: row;
+  @include flex(row, center, center);
   flex-wrap: wrap;
   width: 100%;
+  @include tablet {
+    justify-content: space-between;
+  }
 
   &__logo-container {
     width: 100%;
     text-align: center;
     margin-bottom: 1rem;
+    @include tablet {
+      width: 33%;
+      text-align: left;
+      margin: 0;
+    }
   }
 
   &__search {
     flex-grow: 1;
-    margin-bottom: 1rem;
+    @include tablet {
+      flex-grow: 0;
+      width: 33%;
+    }
   }
 
   &__avatar {
@@ -33,10 +47,18 @@
     @media (max-width: 328px) {
       display: none;
     }
+    @include tablet {
+      order: 1;
+      margin: 0;
+    }
   }
 
   &__button {
-    margin-top: 1rem;
+    margin-top: $mobile-padding;
     width: 100%;
+    @include tablet {
+      width: auto;
+      margin: 0;
+    }
   }
 }
