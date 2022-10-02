@@ -38,6 +38,7 @@
     height: 10rem;
     margin: 0.4rem 0;
     padding: 1.2rem;
+
     @include tablet {
       height: 1rem;
       margin: 0;
@@ -64,12 +65,24 @@
     transform: translateY(-50%);
   }
 
+  &__avatar {
+    @include desktop {
+      margin-right: 1.6rem;
+    }
+  }
+
   &__name {
     font-weight: bold;
   }
 
   &__date {
     color: $primary-silver;
+  }
+
+  &__text {
+    @include tablet {
+      line-height: 2.2rem;
+    }
   }
 }
 

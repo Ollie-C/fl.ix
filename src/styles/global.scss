@@ -34,9 +34,14 @@
   &::placeholder {
     color: $secondary-black;
   }
-  &--active {
-    border: 2px solid $primary-blue;
+
+  &:focus {
+    outline: 2px solid $primary-blue;
+    &::placeholder {
+      opacity: 0%;
+    }
   }
+
   // &--error {
   //   border: 1px solid #d22d2d;
   // }
