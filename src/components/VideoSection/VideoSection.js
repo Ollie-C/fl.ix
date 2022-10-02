@@ -2,9 +2,7 @@ import viewsIcon from "../../assets/Icons/views.svg";
 import likesIcon from "../../assets/Icons/likes.svg";
 import "./videosection.scss";
 
-const VideoSection = ({ video }) => {
-  // let videoDate = new Date(video.timestamp);
-
+const VideoSection = ({ video, formatDate }) => {
   return (
     <>
       <article className="description">
@@ -14,7 +12,7 @@ const VideoSection = ({ video }) => {
         <div className="description__card description__card--middle">
           <div className="description__container description__container--left">
             <p className="description__author">By {video.channel}</p>
-            <p className="description__date">FIX THIS</p>
+            <p className="description__date">{formatDate(video.timestamp)}</p>
           </div>
           <div className="description__container">
             <div className="description__counter">

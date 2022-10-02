@@ -21,14 +21,19 @@ const App = () => {
     setCurrentVideo(updatedVideo);
   };
 
+  const formatDate = (timestamp) => {
+    const videoDate = new Date(timestamp);
+    return videoDate.toLocaleDateString();
+  };
+
   return (
     <>
       <Navbar />
       <Video video={currentVideo} />
       <main className="main">
         <div className="section-wrapper">
-          <VideoSection video={currentVideo} />
-          <CommentsSection video={currentVideo} />
+          <VideoSection video={currentVideo} formatDate={formatDate} />
+          <CommentsSection video={currentVideo} formatDate={formatDate} />
         </div>
         <SuggestionsSection
           video={currentVideo}

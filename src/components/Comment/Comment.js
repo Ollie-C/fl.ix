@@ -1,6 +1,7 @@
 import "../CommentsSection/commentssection.scss";
 
-const Comment = ({ comment }) => {
+const Comment = ({ comment, formatDate }) => {
+  console.log(comment);
   return (
     <article className="comment-card">
       <div className="comment-card__left">
@@ -9,7 +10,7 @@ const Comment = ({ comment }) => {
       <div className="comment-card__right">
         <div className="name-wrapper">
           <p className="comments__name">{comment.name}</p>
-          <p className="comments__date">FIX ME</p>
+          <p className="comments__date">{formatDate(comment.timestamp)}</p>
         </div>
         <p className="comments__text">{comment.comment}</p>
       </div>
