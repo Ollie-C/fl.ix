@@ -5,7 +5,7 @@
   //FIXED
   padding: $mobile-padding;
   @include tablet {
-    padding: 0 $tablet-padding;
+    padding: 1.2rem $tablet-padding;
   }
 
   &__count {
@@ -65,6 +65,10 @@
   &__name {
     font-weight: bold;
   }
+
+  &__date {
+    color: $primary-silver;
+  }
 }
 
 .comment-card {
@@ -88,5 +92,5 @@
 .name-wrapper {
   display: flex;
   justify-content: space-between;
-  padding-bottom: 1.6rem;
+  padding: 0.5rem 0 1rem 0;
 }

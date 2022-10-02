@@ -3,7 +3,7 @@ import commentIcon from "../../assets/Icons/add_comment.svg";
 
 const CommentsForm = () => {
   return (
-    <article className="comment-card comments__form">
+    <article className="comment-card">
       <div className="comment-card__left">
         <div className="comments__avatar global__avatar global__avatar--photo"></div>
       </div>

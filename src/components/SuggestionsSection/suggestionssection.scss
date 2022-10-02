@@ -1,8 +1,15 @@
 @use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
 
 .suggestions {
-  padding: 0 $mobile-padding;
+  padding: 1rem $mobile-padding;
+  @include tablet {
+    padding: 2rem $tablet-padding;
+  }
   &__header {
-    padding: $mobile-padding 0;
+    font-size: 1.4rem;
+    color: $primary-silver;
+    padding-bottom: 1rem;
+    font-weight: bold;
   }
 }
