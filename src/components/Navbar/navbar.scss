@@ -51,10 +51,6 @@
   &__search {
     width: 100%;
     padding: 0 4rem;
-    background-color: $secondary-white;
-    &::placeholder {
-      color: $primary-black;
-    }
   }
   &__avatar {
     margin-left: 2rem;

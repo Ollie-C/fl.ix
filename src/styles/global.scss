@@ -34,6 +34,13 @@
   border: 1px solid $secondary-silver;
   padding: 1.2rem;
   outline: none;
+  font-size: 1.4rem;
+  font-family: Avenir;
+  color: $secondary-black;
+  background-color: $secondary-white;
+  &::placeholder {
+    color: $secondary-black;
+  }
   &--active {
     border: 2px solid $primary-blue;
   }

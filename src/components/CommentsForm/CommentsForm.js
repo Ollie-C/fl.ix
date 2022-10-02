@@ -1,4 +1,5 @@
 import "../CommentsSection/commentssection.scss";
+import commentIcon from "../../assets/Icons/add_comment.svg";
 
 const CommentsForm = () => {
   return (
@@ -17,7 +18,15 @@ const CommentsForm = () => {
             id="addcomment"
             placeholder="Add a new comment"
           ></textarea>
-          <button className="comments__button global__button">COMMENT</button>
+
+          <div className="comments__button-wrapper">
+            <img
+              className="comments__icon"
+              src={commentIcon}
+              alt="comment-icon"
+            />
+            <button className="comments__button global__button">COMMENT</button>
+          </div>
         </form>
       </div>
     </article>

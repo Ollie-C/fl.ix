@@ -1,12 +1,32 @@
 @use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
 
 .comments {
   //FIXED
-  padding: 0 $mobile-padding;
+  padding: $mobile-padding;
+  @include tablet {
+    padding: 0 $tablet-padding;
+  }
+
+  &__count {
+    padding-bottom: 2rem;
+    @include tablet {
+      padding: $tablet-gutter 0;
+      font-family: Avenir-bold;
+    }
+  }
 
   &__label {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     color: $primary-silver;
+    position: absolute;
+    top: 4px;
+  }
+
+  &__form {
+    @include tablet {
+      display: flex;
+    }
   }
 
   &__input,
@@ -17,10 +37,29 @@
   &__input {
     height: 10rem;
     margin: 0.4rem 0;
+    @include tablet {
+      height: 1rem;
+      margin: 0;
+      margin-right: $tablet-gutter;
+      overflow: hidden;
+    }
   }
 
-  &__button {
+  &__button-wrapper {
+    position: relative;
     margin-top: 1rem;
+    @include tablet {
+      margin: 0;
+      width: auto;
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    top: 50%;
+    left: 1rem;
+    width: 20px;
+    transform: translateY(-50%);
   }
 
   &__name {
@@ -32,6 +71,10 @@
   display: flex;
   padding: $mobile-padding 0;
   border-bottom: 2px solid $secondary-silver;
+  position: relative;
+  @include tablet {
+    padding: $tablet-gutter 0;
+  }
 
   &__left {
     margin-right: 1.6rem;
