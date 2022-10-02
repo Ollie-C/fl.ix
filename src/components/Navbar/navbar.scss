@@ -20,7 +20,7 @@
   flex-wrap: wrap;
   width: 100%;
   @include tablet {
-    justify-content: space-between;
+    // justify-content: space-between;
   }
 
   &__logo-container {
@@ -28,7 +28,7 @@
     text-align: center;
     margin-bottom: 1rem;
     @include tablet {
-      width: 33%;
+      width: 30%;
       text-align: left;
       margin: 0;
     }
@@ -39,6 +39,7 @@
     @include tablet {
       flex-grow: 0;
       width: 33%;
+      margin-right: 2.4rem;
     }
   }
 
@@ -59,6 +60,7 @@
     @include tablet {
       width: auto;
       margin: 0;
+      margin-right: 2.4rem;
     }
   }
 }
