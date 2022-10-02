@@ -6,6 +6,7 @@ import videoDetails from "./assets/Data/video-details.json";
 import "./styles/global.scss";
 //COMPONENTS
 import Navbar from "./components/Navbar/Navbar";
+import Video from "./components/Video/Video";
 import VideoSection from "./components/VideoSection/VideoSection";
 import CommentsSection from "./components/CommentsSection/CommentsSection";
 import SuggestionsSection from "./components/SuggestionsSection/SuggestionsSection";
@@ -23,12 +24,17 @@ const App = () => {
   return (
     <>
       <Navbar />
-      <VideoSection video={currentVideo} />
-      <CommentsSection video={currentVideo} />
-      <SuggestionsSection
-        video={currentVideo}
-        suggestedVideoClickHandler={suggestedVideoClickHandler}
-      />
+      <Video video={currentVideo} />
+      <main className="main">
+        <div className="section-wrapper">
+          <VideoSection video={currentVideo} />
+          <CommentsSection video={currentVideo} />
+        </div>
+        <SuggestionsSection
+          video={currentVideo}
+          suggestedVideoClickHandler={suggestedVideoClickHandler}
+        />
+      </main>
     </>
   );
 };

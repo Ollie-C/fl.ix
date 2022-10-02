@@ -6,8 +6,10 @@
   width: 100%;
   @include tablet {
     height: 40rem;
-    display: flex;
-    justify-content: center;
+    text-align: center;
+  }
+  @include desktop {
+    height: 50rem;
   }
 }
 
@@ -17,14 +19,6 @@
   @include tablet {
     object-fit: fill;
     width: auto;
-  }
-}
-
-.content {
-  //FIXED
-  padding: 0 $mobile-padding;
-  @include tablet {
-    padding: 0 $tablet-padding;
   }
 }
 

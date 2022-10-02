@@ -2,12 +2,11 @@
 @use "../../styles/partials/mixins" as *;
 
 .header {
-  //FIXED
+  @include flex(row, center, center);
   padding: $mobile-padding;
-  display: flex;
-  align-items: center;
   @include tablet {
     padding: 1.6rem $tablet-padding;
+    @include desktop-width;
   }
 }
 
@@ -15,9 +14,6 @@
   @include flex(row, space-between, center);
   flex-wrap: wrap;
   width: 100%;
-  @include tablet {
-    // justify-content: space-between;
-  }
 
   &__container {
     @include flex(row, space-evenly, center);

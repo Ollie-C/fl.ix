@@ -3,9 +3,9 @@
 
 .comments {
   //FIXED
-  padding: $mobile-padding;
+  padding: $mobile-padding 0;
   @include tablet {
-    padding: 1.2rem $tablet-padding;
+    padding: 1.2rem 0;
   }
 
   &__count {
@@ -37,6 +37,7 @@
   &__input {
     height: 10rem;
     margin: 0.4rem 0;
+    padding: 1.2rem;
     @include tablet {
       height: 1rem;
       margin: 0;

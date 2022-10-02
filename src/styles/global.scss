@@ -5,39 +5,32 @@
 @use "./partials/mixins" as *;
 
 .global__avatar {
-  //FIXED
   width: 3.6rem;
   height: 3.6rem;
-  border-radius: 50%;
-  background-color: $secondary-silver;
-  //CUSTOM
   min-width: 3.6rem;
   min-height: 3.6rem;
+  border-radius: 50%;
+  background-color: $secondary-silver;
   &--photo {
     background-image: url(../assets/Images/Mohan-muruge.jpg);
     background-size: cover;
   }
   @include tablet {
-    //FIXED
     width: 4rem;
     height: 4rem;
   }
 }
 
 .global__input {
-  //FIXED
-
   min-height: 3.6rem;
   min-width: 24rem;
-  max-width: 100%;
-  border-radius: 4px;
-  border: 1px solid $secondary-silver;
-  padding: 1.2rem;
-  outline: none;
   font-size: 1.4rem;
   font-family: Avenir;
   color: $secondary-black;
   background-color: $secondary-white;
+  border-radius: 4px;
+  border: 1px solid $secondary-silver;
+  outline: none;
   &::placeholder {
     color: $secondary-black;
   }
@@ -48,25 +41,33 @@
   //   border: 1px solid #d22d2d;
   // }
   @include tablet {
-    //FIXED
     min-height: 4rem;
   }
 }
 
 .global__button {
-  //Fixed
-  background-color: $primary-blue;
-  color: $primary-white;
   height: 4rem;
   min-width: 15rem;
   width: 100%;
   padding: 0rem 3.2rem;
+  background-color: $primary-blue;
+  color: $primary-white;
   border: none;
   border-radius: 4px;
   &:hover {
-    //FIXED
     background-color: $secondary-blue;
-    //CUSTOM
     cursor: pointer;
+  }
+}
+
+.main {
+  //FIXED
+  padding: 0 $mobile-padding;
+  @include tablet {
+    padding: 0 $tablet-padding;
+    @include desktop-width;
+  }
+  @include desktop {
+    @include flex(row, center, center);
   }
 }
