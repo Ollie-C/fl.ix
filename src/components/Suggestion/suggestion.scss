@@ -30,9 +30,8 @@
   }
 
   &__details {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    @include flex(column, space-between, flex-start);
+
     width: 24rem;
   }
 

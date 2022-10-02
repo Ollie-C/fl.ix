@@ -1,6 +1,5 @@
 import viewsIcon from "../../assets/Icons/views.svg";
 import likesIcon from "../../assets/Icons/likes.svg";
-
 import "./videosection.scss";
 
 const VideoSection = ({ video }) => {

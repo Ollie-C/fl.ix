@@ -113,7 +113,6 @@
 }
 
 .name-wrapper {
-  display: flex;
-  justify-content: space-between;
+  @include flex(row, space-between, center);
   padding: 0.5rem 0 1rem 0;
 }

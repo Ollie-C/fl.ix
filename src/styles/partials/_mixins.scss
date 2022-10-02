@@ -7,6 +7,7 @@
   align-items: $align;
 }
 
+//FIX content size
 @mixin desktop-width {
   max-width: 1202px;
   margin: 0 auto;

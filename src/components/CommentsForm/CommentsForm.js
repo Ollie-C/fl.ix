@@ -1,4 +1,3 @@
-import { useState } from "react";
 import "../CommentsSection/commentssection.scss";
 import commentIcon from "../../assets/Icons/add_comment.svg";
 

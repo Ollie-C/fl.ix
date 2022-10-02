@@ -9,7 +9,7 @@ const SuggestionsSection = ({ video, suggestedVideoClickHandler }) => {
   return (
     <section className="suggestions">
       <p className="suggestions__header">NEXT VIDEOS</p>
-      <ul className="suggestions__list">
+      <ul>
         {filteredVideos.map((video) => {
           return (
             <Suggestion

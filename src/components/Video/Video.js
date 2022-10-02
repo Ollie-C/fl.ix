@@ -1,4 +1,4 @@
-import "../VideoSection/videosection.scss";
+import "../Video/video.scss";
 
 const Video = ({ video }) => {
   return (
