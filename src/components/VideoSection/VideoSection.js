@@ -9,7 +9,7 @@ const VideoSection = ({ video }) => {
   return (
     <>
       <article className="description">
-        <div className="description__card">
+        <div className="description__card description__card--top">
           <h1 className="description__header">{video.title}</h1>
         </div>
         <div className="description__card description__card--middle">

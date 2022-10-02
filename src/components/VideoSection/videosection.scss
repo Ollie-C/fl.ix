@@ -28,17 +28,29 @@
     @include tablet {
       padding-top: $tablet-gutter;
     }
+    @include desktop {
+      padding-right: $desktop-spacing;
+    }
+
+    &--top {
+      @include desktop {
+        padding-top: 0;
+      }
+    }
     &--middle {
       display: flex;
       justify-content: flex-start;
-      border-bottom: 2px solid $secondary-silver;
-      border-top: 2px solid $secondary-silver;
+      border-bottom: 1px solid $secondary-silver;
+      border-top: 1px solid $secondary-silver;
       @include tablet {
         justify-content: space-between;
         width: 100%;
         border-top: none;
         padding: 0;
         padding-bottom: 1rem;
+      }
+      @include desktop {
+        padding-right: $desktop-spacing;
       }
     }
   }

@@ -71,3 +71,23 @@
     @include flex(row, center, center);
   }
 }
+
+//DESKTOP LAYOUT
+.section-wrapper,
+.suggestions {
+  @include desktop {
+    padding: 5rem 0;
+  }
+}
+
+.section-wrapper {
+  @include desktop {
+    // padding-right: 2rem;
+    border-right: 1px solid $secondary-silver;
+  }
+}
+.suggestions {
+  @include desktop {
+    margin-left: $desktop-spacing;
+  }
+}

@@ -43,6 +43,7 @@
       margin: 0;
       margin-right: $tablet-gutter;
       overflow: hidden;
+      resize: none;
     }
   }
 
@@ -75,10 +76,13 @@
 .comment-card {
   display: flex;
   padding: $mobile-padding 0;
-  border-bottom: 2px solid $secondary-silver;
+  border-bottom: 1px solid $secondary-silver;
   position: relative;
   @include tablet {
     padding: $tablet-gutter 0;
+  }
+  @include desktop {
+    padding-right: $desktop-spacing;
   }
 
   &__left {
@@ -87,6 +91,11 @@
 
   &__right {
     width: 100%;
+  }
+  &:last-child {
+    @include desktop {
+      border: none;
+    }
   }
 }
 
