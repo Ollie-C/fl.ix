@@ -7,11 +7,11 @@
   height: 100%;
 
   @include tablet {
-    height: 40rem;
+    height: 50rem;
     text-align: center;
   }
   @include desktop {
-    height: 50rem;
+    height: 55rem;
   }
 }
 

@@ -4,7 +4,7 @@ import "../CommentsSection/commentssection.scss";
 
 const CommentsSection = ({ video, formatDate }) => {
   const comments = video.comments;
-  const commentCount = video.comments.length + " comments"; //to add condition for s on comments
+  const commentCount = video.comments.length + " Comments"; //to add condition for s on comments
   return (
     <section className="comments">
       <p className="comments__count">{commentCount}</p>

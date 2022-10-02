@@ -1,7 +1,6 @@
 import "../CommentsSection/commentssection.scss";
 
 const Comment = ({ comment, formatDate }) => {
-  console.log(comment);
   return (
     <article className="comment-card">
       <div className="comment-card__left">

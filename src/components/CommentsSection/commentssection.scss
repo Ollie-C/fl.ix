@@ -2,14 +2,14 @@
 @use "../../styles/partials/mixins" as *;
 
 .comments {
-  //FIXED
   padding: $mobile-padding 0;
   @include tablet {
-    padding: 1.2rem 0;
+    padding: 0;
   }
 
   &__count {
-    padding-bottom: 2rem;
+    font-family: Avenir-Demi;
+    margin-bottom: 1rem;
     @include tablet {
       padding: $tablet-gutter 0;
       font-family: Avenir-bold;
@@ -17,10 +17,11 @@
   }
 
   &__label {
-    font-size: 1.2rem;
+    font-family: Avenir-Demi;
+    font-size: 1.4rem;
     color: $primary-silver;
     position: absolute;
-    top: 4px;
+    top: 0px;
   }
 
   &__form {
@@ -72,7 +73,7 @@
   }
 
   &__name {
-    font-weight: bold;
+    font-family: Avenir-Demi;
   }
 
   &__date {
