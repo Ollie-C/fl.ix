@@ -68,26 +68,18 @@
     @include desktop-width;
   }
   @include desktop {
-    @include flex(row, center, center);
+    @include flex(row, center, flex-start);
   }
 }
 
 //DESKTOP LAYOUT
-.section-wrapper,
-.suggestions {
-  @include desktop {
-    padding: 5rem 0;
-  }
-}
-
 .section-wrapper {
   @include desktop {
-    // padding-right: 2rem;
-    border-right: 1px solid $secondary-silver;
+    padding-top: 5rem;
   }
 }
 .suggestions {
   @include desktop {
-    margin-left: $desktop-spacing;
+    border-left: 1px solid $secondary-silver;
   }
 }
