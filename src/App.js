@@ -1,15 +1,14 @@
 //MODULES
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState } from "react";
 //DATA
 import videoDetails from "./assets/Data/video-details.json";
 //STYLES
 import "./styles/global.scss";
 //COMPONENTS
+import HomePage from "./components/pages/HomePage/HomePage";
+import UploadPage from "./components/pages/UploadPage/UploadPage";
 import Navbar from "./components/Navbar/Navbar";
-import Video from "./components/Video/Video";
-import VideoSection from "./components/VideoSection/VideoSection";
-import CommentsSection from "./components/CommentsSection/CommentsSection";
-import SuggestionsSection from "./components/SuggestionsSection/SuggestionsSection";
 
 const App = () => {
   //Video data
@@ -25,22 +24,14 @@ const App = () => {
     const videoDate = new Date(timestamp);
     return videoDate.toLocaleDateString();
   };
-
   return (
-    <>
+    <BrowserRouter>
       <Navbar />
-      <Video video={currentVideo} />
-      <main className="main">
-        <div className="section-wrapper">
-          <VideoSection video={currentVideo} formatDate={formatDate} />
-          <CommentsSection video={currentVideo} formatDate={formatDate} />
-        </div>
-        <SuggestionsSection
-          video={currentVideo}
-          suggestedVideoClickHandler={suggestedVideoClickHandler}
-        />
-      </main>
-    </>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="upload" element={<UploadPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 };
 
