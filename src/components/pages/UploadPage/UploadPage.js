@@ -1,12 +1,31 @@
 import uploadIcon from "../../../assets/Icons/upload.svg";
 import "./uploadpage.scss";
 import thumbnail from "../../../assets/Images/Upload-video-preview.jpg";
+import { useState } from "react";
 
 const UploadPage = () => {
   const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+
+  const titleChangeHandler = (event) => {
+    setTitle(event.target.value);
+  };
+
+  const descriptionChangeHandler = (event) => {
+    setDescription(event.target.value);
+  };
+
+  const isFormValid = () => {
+    if (!title || !description) {
+      alert("Please enter a title and description");
+      return false;
+    }
+    return true;
+  };
 
   const submitHandler = (event) => {
     event.preventDefault();
+    console.log("Success");
   };
   return (
     <>
@@ -25,23 +44,26 @@ const UploadPage = () => {
             />
           </div>
           <div className="upload__container upload__container--middle">
-            <label className="upload__label" htmlFor="addtitle">
+            <label className="upload__label" htmlFor="title">
               TITLE YOUR VIDEO
             </label>
             <input
               type="text"
               className="upload__title global__input"
-              name="addtitle"
+              name="title"
               placeholder="Add a title to your video"
+              value={title}
+              onChange={titleChangeHandler}
             />
-            <label className="upload__label" htmlFor="">
+            <label className="upload__label" htmlFor="description">
               ADD A VIDEO DESCRIPTION
             </label>
             <textarea
               className="upload__description global__input"
-              name="adddescription"
-              id="adddescription"
+              name="description"
               placeholder="Add a description to your video"
+              value={description}
+              onChange={descriptionChangeHandler}
             ></textarea>
           </div>
         </form>
