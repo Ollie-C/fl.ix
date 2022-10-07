@@ -3,6 +3,7 @@ import logo from "../../assets/Logo/BrainFlix-logo.svg";
 import searchIcon from "../../assets/Icons/search.svg";
 import uploadIcon from "../../assets/Icons/upload.svg";
 import "./navbar.scss";
+import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -10,7 +11,9 @@ const Navbar = () => {
       <nav className="nav">
         <div className="nav__logo-wrapper">
           {/* to link in next sprint */}
-          <img src={logo} alt="brainflix-logo" className="global__logo" />
+          <NavLink to="/">
+            <img src={logo} alt="brainflix-logo" className="global__logo" />
+          </NavLink>
         </div>
         <div className="nav__container">
           <div className="nav__search-wrapper">
@@ -21,14 +24,14 @@ const Navbar = () => {
             ></input>
           </div>
           <div className="nav__avatar global__avatar global__avatar--photo"></div>
-          <div className="nav__button-wrapper">
+          <NavLink to="/upload" className="nav__button-wrapper">
             <img
               className="nav__icon nav__icon--upload"
               src={uploadIcon}
               alt="upload-icon"
             />
             <button className="global__button">UPLOAD</button>
-          </div>
+          </NavLink>
         </div>
       </nav>
     </header>

@@ -17,47 +17,38 @@ const HomePage = () => {
   const { videoId } = useParams();
   //State
   // Video list
-  const [videos, setVideos] = useState(null);
+  const [videoList, setVideoList] = useState(null);
   // Current video details
-  const [currentVideo, setCurrentVideo] = useState(null);
+  const [videoDetails, setVideoDetails] = useState(null);
 
-  const hardcodedId = "84e96018-4022-434e-80bf-000ce4cd12b8";
-  const currentVideoId = videoId == null ? hardcodedId : videos[0].id;
+  // // const currentVideoId = videoId == null ? hardcodedId : videos[0].id;
 
   // GET list of videos
   const getVideos = async () => {
-    const videoList = await axios.get(
+    const videos = await axios.get(
       `https://project-2-api.herokuapp.com/videos/${API_KEY}`
     );
-    console.log("videos:");
-    console.log(videoList.data);
-    setVideos(videoList.data);
-  };
-  // GET individual video details
-  const getCurrentVideo = async () => {
-    const videos = await axios.get(
-      `https://project-2-api.herokuapp.com/videos/${currentVideoId}${API_KEY}`
+
+    const videosData = videos.data;
+    setVideoList(videos.data);
+    const video = await axios.get(
+      `https://project-2-api.herokuapp.com/videos/${videosData[0].id}${API_KEY}`
     );
-    console.log("currentVideo:");
-    console.log(videos.data);
-    setCurrentVideo(videos.data);
+
+    setVideoDetails(video.data);
   };
 
   useEffect(() => {
     getVideos();
   }, []);
 
-  useEffect(() => {
-    getCurrentVideo();
-  }, []);
-
-  if (!currentVideo) {
-    return <p>Loading</p>;
+  if (!videoDetails) {
+    return <h2 className="loading">Loading. . .</h2>;
   }
   //Handlers
   const suggestedVideoClickHandler = (videoId) => {
-    const updatedVideo = videoDetails.find((video) => video.id === videoId);
-    setCurrentVideo(updatedVideo);
+    const updatedVideo = videoList.find((video) => video.id === videoId);
+    setVideoDetails(updatedVideo);
   };
 
   const formatDate = (timestamp) => {
@@ -66,14 +57,14 @@ const HomePage = () => {
   };
   return (
     <>
-      <Video video={currentVideo} />
+      <Video video={videoDetails} />
       <main className="main">
         <div className="section-wrapper">
-          <VideoSection video={currentVideo} formatDate={formatDate} />
-          <CommentsSection video={currentVideo} formatDate={formatDate} />
+          <VideoSection video={videoDetails} formatDate={formatDate} />
+          <CommentsSection video={videoDetails} formatDate={formatDate} />
         </div>
         <SuggestionsSection
-          video={currentVideo}
+          video={videoDetails}
           suggestedVideoClickHandler={suggestedVideoClickHandler}
         />
       </main>
