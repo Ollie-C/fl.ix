@@ -2,8 +2,10 @@
 import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
+//UTILS & HELPERS
+import { API_KEY, BASE_URL } from "../../../utils/API";
 //DATA
-import videoDetails from "../../../assets/Data/video-details.json";
+// import videoDetails from "../../../assets/Data/video-details.json";
 //STYLES
 import "../../../styles/global.scss";
 //COMPONENTS
@@ -13,42 +15,47 @@ import CommentsSection from "../../CommentsSection/CommentsSection";
 import SuggestionsSection from "../../SuggestionsSection/SuggestionsSection";
 
 const HomePage = () => {
-  const API_KEY = "?api_key=05b216db-6e48-4f54-9825-e00c61ac41a6";
-  const { videoId } = useParams();
-  //State
-  // Video list
+  // Video list - state
   const [videoList, setVideoList] = useState(null);
-  // Current video details
+  // Current video details state
   const [videoDetails, setVideoDetails] = useState(null);
 
-  // // const currentVideoId = videoId == null ? hardcodedId : videos[0].id;
+  // Rerender based on id
+
+  const { videoId } = useParams();
 
   // GET list of videos
   const getVideos = async () => {
-    const videos = await axios.get(
-      `https://project-2-api.herokuapp.com/videos/${API_KEY}`
-    );
-
-    const videosData = videos.data;
-    setVideoList(videos.data);
+    // GET ID from list
+    const videos = await axios.get(`${BASE_URL}videos/?api_key=${API_KEY}`);
+    const videosList = videos.data;
+    setVideoList(videosList);
+    // Use ID to GET individual video details
     const video = await axios.get(
-      `https://project-2-api.herokuapp.com/videos/${videosData[0].id}${API_KEY}`
+      `${BASE_URL}videos/${videoId || videosList[0].id}?api_key=${API_KEY}`
+    );
+    setVideoDetails(video.data);
+  };
+
+  //Update video upon clicking suggested video from list
+  const updateVideo = async (videoId) => {
+    const updatedVideo = await axios.get(
+      `${BASE_URL}videos/${videoId}/?api_key=${API_KEY}`
     );
 
-    setVideoDetails(video.data);
+    setVideoDetails(updatedVideo.data);
   };
 
   useEffect(() => {
     getVideos();
-  }, []);
+  }, [videoId]);
 
   if (!videoDetails) {
     return <h2 className="loading">Loading. . .</h2>;
   }
   //Handlers
   const suggestedVideoClickHandler = (videoId) => {
-    const updatedVideo = videoList.find((video) => video.id === videoId);
-    setVideoDetails(updatedVideo);
+    updateVideo(videoId);
   };
 
   const formatDate = (timestamp) => {

@@ -12,21 +12,13 @@ import Navbar from "./components/Navbar/Navbar";
 import axios from "axios";
 
 const App = () => {
-  //Handlers
-  // const suggestedVideoClickHandler = (videoId) => {
-  //   const updatedVideo = videoDetails.find((video) => video.id === videoId);
-  //   setCurrentVideo(updatedVideo);
-  // };
-
-  // const formatDate = (timestamp) => {
-  //   const videoDate = new Date(timestamp);
-  //   return videoDate.toLocaleDateString();
-  // };
   return (
     <BrowserRouter>
       <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/videos" element={<HomePage />} />
+        <Route path="/videos/:videoId" element={<HomePage />} />
         <Route path="upload" element={<UploadPage />} />
       </Routes>
     </BrowserRouter>
