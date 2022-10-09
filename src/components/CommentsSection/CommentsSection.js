@@ -8,7 +8,7 @@ const CommentsSection = ({ video, formatDate }) => {
   return (
     <section className="comments">
       <p className="comments__count">{commentCount}</p>
-      <CommentsForm />
+      <CommentsForm video={video} />
       {comments.map((comment) => {
         return (
           <Comment key={comment.id} comment={comment} formatDate={formatDate} />

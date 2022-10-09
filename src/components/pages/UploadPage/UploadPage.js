@@ -7,7 +7,7 @@ import "./uploadpage.scss";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 //HELPER
-import { isInputValid, formValidation } from "../../../utils/Helper";
+import { isInputValid, isFormValid } from "../../../utils/Helper";
 
 const UploadPage = () => {
   const [title, setTitle] = useState("");
@@ -25,7 +25,7 @@ const UploadPage = () => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    if (formValidation(title, description)) {
+    if (isFormValid(title, description)) {
       alert("Upload was successful.");
       document.location = "/";
     } else {

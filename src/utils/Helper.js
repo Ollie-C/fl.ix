@@ -6,7 +6,7 @@ const isInputValid = (input, min, max) => {
   return true;
 };
 
-const formValidation = (inputA, inputB) => {
+const isFormValid = (inputA, inputB) => {
   if (!inputA || !inputB) {
     return false;
   }
@@ -18,4 +18,4 @@ const formValidation = (inputA, inputB) => {
   return true;
 };
 
-export { isInputValid, formValidation };
+export { isInputValid, isFormValid };
