@@ -21,6 +21,9 @@
       border-bottom: 1px solid $secondary-silver;
       padding-bottom: $tablet-gutter;
     }
+    @include desktop {
+      font-size: 3.6rem;
+    }
   }
 
   &__thumbnail {
@@ -54,6 +57,9 @@
     padding: 0.6rem 0;
     font-size: 1.2rem;
     color: $primary-silver;
+    @include desktop {
+      font-size: 1.5rem;
+    }
   }
 
   &__description,
@@ -94,6 +100,12 @@
     &--top,
     &--middle {
       @include flex(column, center, flex-start);
+    }
+
+    &--middle {
+      @include desktop {
+        padding-left: $tablet-gutter;
+      }
     }
   }
 

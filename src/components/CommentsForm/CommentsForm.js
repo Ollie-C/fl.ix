@@ -47,7 +47,7 @@ const CommentsForm = ({ video }) => {
           </label>
           <textarea
             className={`comments__input global__input ${
-              isInputValid(comment, 2, 50) ? "" : "global__input--error"
+              isInputValid(comment, 0, 50) ? "" : "global__input--error"
             }`}
             name="addcomment"
             value={comment}

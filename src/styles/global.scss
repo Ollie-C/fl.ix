@@ -35,7 +35,7 @@
     color: $secondary-black;
   }
   &--error {
-    border: 2px solid red;
+    outline: 1px solid #d22d2d;
   }
 
   &:focus {

@@ -20,6 +20,7 @@
   height: 100%;
   @include tablet {
     object-fit: fill;
-    width: auto;
+    width: 1130px;
+    max-width: 100%;
   }
 }
