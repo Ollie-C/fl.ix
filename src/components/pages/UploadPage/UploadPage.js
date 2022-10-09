@@ -1,8 +1,13 @@
+//IMAGES
 import uploadIcon from "../../../assets/Icons/upload.svg";
-import "./uploadpage.scss";
 import thumbnail from "../../../assets/Images/Upload-video-preview.jpg";
+//STYLE
+import "./uploadpage.scss";
+//MODULES
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+//HELPER
+import { isInputValid, formValidation } from "../../../utils/Helper";
 
 const UploadPage = () => {
   const [title, setTitle] = useState("");
@@ -18,36 +23,9 @@ const UploadPage = () => {
     setDescription(event.target.value);
   };
 
-  const isTitleValid = () => {
-    if (title.length < 2 || title.length > 15) {
-      return false;
-    }
-    return true;
-  };
-
-  const isDescriptionValid = () => {
-    if (description.length < 5 || description.length > 30) {
-      return false;
-    }
-    return true;
-  };
-
-  const formValidation = () => {
-    if (!title || !description) {
-      return false;
-    }
-    if (!isTitleValid()) {
-      return false;
-    }
-    if (!isDescriptionValid()) {
-      return false;
-    }
-    return true;
-  };
-
   const submitHandler = (event) => {
     event.preventDefault();
-    if (formValidation()) {
+    if (formValidation(title, description)) {
       alert("Upload was successful.");
       document.location = "/";
     } else {
@@ -78,7 +56,7 @@ const UploadPage = () => {
             <input
               type="text"
               className={`upload__title global__input ${
-                isTitleValid() ? "" : "global__input--error"
+                isInputValid(title, 2, 15) ? "" : "global__input--error"
               }`}
               name="title"
               placeholder="Add a title to your video"
@@ -90,7 +68,7 @@ const UploadPage = () => {
             </label>
             <textarea
               className={`upload__description global__input ${
-                isDescriptionValid() ? "" : "global__input--error"
+                isInputValid(description, 5, 30) ? "" : "global__input--error"
               }`}
               name="description"
               placeholder="Add a description to your video"
