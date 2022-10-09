@@ -2,10 +2,13 @@ import uploadIcon from "../../../assets/Icons/upload.svg";
 import "./uploadpage.scss";
 import thumbnail from "../../../assets/Images/Upload-video-preview.jpg";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const UploadPage = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+
+  const navigate = useNavigate();
 
   const titleChangeHandler = (event) => {
     setTitle(event.target.value);
@@ -15,9 +18,28 @@ const UploadPage = () => {
     setDescription(event.target.value);
   };
 
-  const isFormValid = () => {
+  const isTitleValid = () => {
+    if (title.length < 2 || title.length > 15) {
+      return false;
+    }
+    return true;
+  };
+
+  const isDescriptionValid = () => {
+    if (description.length < 5 || description.length > 30) {
+      return false;
+    }
+    return true;
+  };
+
+  const formValidation = () => {
     if (!title || !description) {
-      alert("Please enter a title and description");
+      return false;
+    }
+    if (!isTitleValid()) {
+      return false;
+    }
+    if (!isDescriptionValid()) {
       return false;
     }
     return true;
@@ -25,13 +47,19 @@ const UploadPage = () => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    console.log("Success");
+    if (formValidation()) {
+      alert("Upload was successful.");
+      document.location = "/";
+    } else {
+      alert("Please fill in the form again.");
+    }
   };
+
   return (
     <>
       <article className="upload">
         <h1 className="upload__header">Upload Video</h1>
-        <form className="upload__form" onSubmit={submitHandler}>
+        <form className="upload__form">
           <div className="upload__container upload__container--top">
             <label className="upload__label" htmlFor="thumbnail">
               VIDEO THUMBNAIL
@@ -49,7 +77,9 @@ const UploadPage = () => {
             </label>
             <input
               type="text"
-              className="upload__title global__input"
+              className={`upload__title global__input ${
+                isTitleValid() ? "" : "global__input--error"
+              }`}
               name="title"
               placeholder="Add a title to your video"
               value={title}
@@ -59,7 +89,9 @@ const UploadPage = () => {
               ADD A VIDEO DESCRIPTION
             </label>
             <textarea
-              className="upload__description global__input"
+              className={`upload__description global__input ${
+                isDescriptionValid() ? "" : "global__input--error"
+              }`}
               name="description"
               placeholder="Add a description to your video"
               value={description}
@@ -70,9 +102,16 @@ const UploadPage = () => {
         <div className="upload__container upload__container--bottom">
           <div className="upload__button-wrapper">
             <img className="upload__icon" src={uploadIcon} alt="upload-icon" />
-            <button className="upload__button global__button">PUBLISH</button>
+            <button
+              className="upload__button global__button"
+              onClick={submitHandler}
+            >
+              PUBLISH
+            </button>
           </div>
-          <p className="upload__cancel">CANCEL</p>
+          <p onClick={() => navigate(-1)} className="upload__cancel">
+            CANCEL
+          </p>
         </div>
       </article>
     </>
