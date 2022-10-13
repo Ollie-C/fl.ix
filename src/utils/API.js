@@ -1,4 +1,4 @@
-const API_KEY = "05b216db-6e48-4f54-9825-e00c61ac41a6";
-const BASE_URL = "https://project-2-api.herokuapp.com/";
+// const API_KEY = "05b216db-6e48-4f54-9825-e00c61ac41a6";
+const BASE_URL = "http://localhost:8080/";
 
-export { API_KEY, BASE_URL };
+export { BASE_URL };

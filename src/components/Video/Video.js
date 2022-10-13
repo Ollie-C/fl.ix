@@ -1,14 +1,13 @@
 import "../Video/video.scss";
-import { API_KEY, BASE_URL } from "../../utils/API";
 
-const Video = ({ video }) => {
+const Video = ({ currentVideo }) => {
   return (
     <div className="video-container">
       <video
-        src={`${video.video}?api_key=${API_KEY}`}
+        src={currentVideo.video}
         controls
         className="video"
-        poster={video.image}
+        poster={currentVideo.image}
       ></video>
     </div>
   );

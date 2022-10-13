@@ -1,14 +1,13 @@
 import { NavLink } from "react-router-dom";
 import "./suggestion.scss";
 
-const Suggestion = ({ video, suggestedVideoClickHandler }) => {
+const Suggestion = ({ video }) => {
   return (
     <>
       <NavLink to={`/videos/${video.id}`}>
         <article
           className="suggestions__card"
           onClick={() => {
-            suggestedVideoClickHandler(video.id);
             window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
           }}
         >

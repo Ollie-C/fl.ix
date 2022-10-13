@@ -1,23 +1,19 @@
 import "./suggestionssection.scss";
 import Suggestion from "../Suggestion/Suggestion.js";
-import sideVideos from "../../assets/Data/videos.json";
+import { useParams } from "react-router-dom";
 
-const SuggestionsSection = ({ video, suggestedVideoClickHandler }) => {
-  const filteredVideos = sideVideos.filter((sideVideo) => {
-    return sideVideo.id !== video.id;
+const SuggestionsSection = ({ videos }) => {
+  const { videoId } = useParams();
+
+  const filteredVideos = videos.filter((video) => {
+    return video.id !== videoId;
   });
   return (
     <section className="suggestions">
       <p className="suggestions__header">NEXT VIDEOS</p>
       <ul>
         {filteredVideos.map((video) => {
-          return (
-            <Suggestion
-              key={video.id}
-              video={video}
-              suggestedVideoClickHandler={suggestedVideoClickHandler}
-            />
-          );
+          return <Suggestion key={video.id} video={video} />;
         })}
       </ul>
     </section>

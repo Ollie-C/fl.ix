@@ -2,13 +2,15 @@ import CommentsForm from "../CommentsForm/CommentsForm.js";
 import Comment from "../Comment/Comment.js";
 import "../CommentsSection/commentssection.scss";
 
-const CommentsSection = ({ video, formatDate }) => {
-  const comments = video.comments;
-  const commentCount = video.comments.length + " Comments"; //to add condition for s on comments
+const CommentsSection = ({ currentVideo, formatDate }) => {
+  // const comments = [...currentVideo.comments].reverse();
+  const comments = currentVideo.comments;
+  const commentCount = comments.length + " Comments"; //to add condition for s on comments
+
   return (
     <section className="comments">
       <p className="comments__count">{commentCount}</p>
-      <CommentsForm video={video} />
+      <CommentsForm currentVideo={currentVideo} />
       {comments.map((comment) => {
         return (
           <Comment key={comment.id} comment={comment} formatDate={formatDate} />

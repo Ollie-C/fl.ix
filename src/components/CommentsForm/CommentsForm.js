@@ -3,7 +3,7 @@ import commentIcon from "../../assets/Icons/add_comment.svg";
 import { isInputValid } from "../../utils/Helper";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-import { API_KEY, BASE_URL } from "../../utils/API";
+import { BASE_URL } from "../../utils/API";
 import axios from "axios";
 
 const CommentsForm = ({ video }) => {
@@ -13,12 +13,16 @@ const CommentsForm = ({ video }) => {
 
   const { videoId } = useParams();
 
-  const postComment = async () => {
-    const videos = await axios.post(
-      `${BASE_URL}videos/${videoId || video.id}/comments?api_key=${API_KEY}`,
-      newComment
-    );
-  };
+  // const postComment = async () => {
+  //   const videos = await axios.post(
+  //     `${BASE_URL}videos/${videoId || video.id}/comments`,
+  //     newComment
+  //   );
+  // };
+
+  // const getComments = async () => {
+  //   const videos = await axios.get(``);
+  // };
 
   const commentChangeHandler = (event) => {
     setComment(event.target.value);
@@ -32,7 +36,7 @@ const CommentsForm = ({ video }) => {
       return false;
     }
     console.log(newComment);
-    postComment();
+    // postComment();
   };
 
   return (
@@ -41,7 +45,7 @@ const CommentsForm = ({ video }) => {
         <div className="comments__avatar global__avatar global__avatar--photo"></div>
       </div>
       <div className="comment-card__right">
-        <form className="comments__form" onSubmit={submitHandler}>
+        <form className="comments__form" /*onSubmit={submitHandler}*/>
           <label className="comments__label" htmlFor="addcomment">
             JOIN THE CONVERSATION
           </label>
@@ -51,7 +55,7 @@ const CommentsForm = ({ video }) => {
             }`}
             name="addcomment"
             value={comment}
-            onChange={commentChangeHandler}
+            /*onChange={commentChangeHandler}*/
             id="addcomment"
             placeholder="Add a new comment"
           ></textarea>
