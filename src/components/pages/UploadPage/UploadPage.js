@@ -6,14 +6,16 @@ import "./uploadpage.scss";
 //MODULES
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 //HELPER
 import { isInputValid, isFormValid } from "../../../utils/Helper";
+//UTILS & HELPERS
+import { BASE_URL } from "../../../utils/API";
 
 const UploadPage = () => {
+  const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-
-  const navigate = useNavigate();
 
   const titleChangeHandler = (event) => {
     setTitle(event.target.value);
@@ -23,21 +25,28 @@ const UploadPage = () => {
     setDescription(event.target.value);
   };
 
-  const submitHandler = (event) => {
-    event.preventDefault();
-    if (isFormValid(title, description)) {
-      alert("Upload was successful.");
-      document.location = "/";
-    } else {
+  const formSubmitHandler = async (e, title, description) => {
+    e.preventDefault();
+    const { data } = await axios.post(`${BASE_URL}videos`, {
+      title: title,
+      description: description,
+    });
+  };
+
+  const submitHandler = (e) => {
+    if (!isFormValid(title, description)) {
       alert("Please fill in the form again.");
     }
+    formSubmitHandler(e, title, description);
+    alert("Upload was successful.");
+    document.location = "/";
   };
 
   return (
     <>
       <article className="upload">
         <h1 className="upload__header">Upload Video</h1>
-        <form className="upload__form">
+        <form className="upload__form" id="uploadform" onSubmit={submitHandler}>
           <div className="upload__container upload__container--top">
             <label className="upload__label" htmlFor="thumbnail">
               VIDEO THUMBNAIL
@@ -82,7 +91,9 @@ const UploadPage = () => {
             <img className="upload__icon" src={uploadIcon} alt="upload-icon" />
             <button
               className="upload__button global__button"
-              onClick={submitHandler}
+              type="submit"
+              form="uploadform"
+              disabled={!isFormValid(title, description)}
             >
               PUBLISH
             </button>
