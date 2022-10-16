@@ -69,6 +69,23 @@
 
   &__icon {
     margin-right: 5px;
+    &:hover {
+      filter: invert(82%) sepia(90%) saturate(300%) hue-rotate(290deg)
+        brightness(120%) contrast(119%);
+      cursor: pointer;
+    }
+    &--liked {
+      filter: invert(82%) sepia(90%) saturate(300%) hue-rotate(290deg)
+        brightness(120%) contrast(119%);
+    }
+  }
+
+  &__icon:last-child {
+    &:hover {
+      filter: invert(82%) sepia(90%) saturate(300%) hue-rotate(290deg)
+        brightness(120%) contrast(119%);
+      cursor: pointer;
+    }
   }
 
   &__author {

@@ -1,8 +1,21 @@
 import viewsIcon from "../../assets/Icons/views.svg";
 import likesIcon from "../../assets/Icons/likes.svg";
 import "./videosection.scss";
+import { useState } from "react";
 
-const VideoSection = ({ currentVideo, formatDate }) => {
+const VideoSection = ({ currentVideo, formatDate, likeHandler }) => {
+  const [like, setLike] = useState(false);
+
+  const clickHandler = (e) => {
+    e.preventDefault();
+    if (!like) {
+      likeHandler(e);
+      setLike(true);
+      console.log("success");
+    } else {
+      console.log("fail");
+    }
+  };
   return (
     <>
       <article className="description">
@@ -27,9 +40,12 @@ const VideoSection = ({ currentVideo, formatDate }) => {
             </div>
             <div className="description__counter">
               <img
-                className="description__icon"
+                className={`description__icon ${
+                  !like ? "" : "description__icon--liked"
+                }`}
                 src={likesIcon}
                 alt="views-icon"
+                onClick={clickHandler}
               />
               <p className="description__likecount">{currentVideo.likes}</p>
             </div>

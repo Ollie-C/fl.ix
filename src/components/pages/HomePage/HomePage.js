@@ -44,6 +44,13 @@ const HomePage = () => {
     getVideos();
   };
 
+  //LIKES
+  const likeHandler = async (e) => {
+    e.preventDefault();
+    await axios.put(`${BASE_URL}${videoId}/likes`);
+    getVideos();
+  };
+
   useEffect(() => {
     getVideos();
   }, [videoId]);
@@ -61,7 +68,11 @@ const HomePage = () => {
       <Video currentVideo={currentVideo} />
       <main className="main">
         <div className="section-wrapper">
-          <VideoSection currentVideo={currentVideo} formatDate={formatDate} />
+          <VideoSection
+            currentVideo={currentVideo}
+            formatDate={formatDate}
+            likeHandler={likeHandler}
+          />
           <CommentsSection
             currentVideo={currentVideo}
             formatDate={formatDate}
