@@ -72,10 +72,6 @@ const HomePage = () => {
     return <h2 className="loading">Loading. . .</h2>;
   }
 
-  const formatDate = (timestamp) => {
-    const videoDate = new Date(timestamp);
-    return videoDate.toLocaleDateString();
-  };
   return (
     <>
       <Video currentVideo={currentVideo} />
@@ -83,13 +79,11 @@ const HomePage = () => {
         <div className="section-wrapper">
           <VideoSection
             currentVideo={currentVideo}
-            formatDate={formatDate}
             likeHandler={likeHandler}
             videoId={videoId}
           />
           <CommentsSection
             currentVideo={currentVideo}
-            formatDate={formatDate}
             formSubmitHandler={formSubmitHandler}
           />
         </div>

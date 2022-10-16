@@ -5,4 +5,10 @@ const isInputValid = (input, max) => {
   } else return true;
 };
 
-export { isInputValid };
+//FORM DATE
+const formatDate = (timestamp) => {
+  const videoDate = new Date(timestamp);
+  return videoDate.toLocaleDateString();
+};
+
+export { isInputValid, formatDate };

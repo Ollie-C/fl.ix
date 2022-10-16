@@ -3,8 +3,9 @@ import likesIcon from "../../assets/Icons/likes.svg";
 import "./videosection.scss";
 import { useState } from "react";
 import { useEffect } from "react";
+import { formatDate } from "../../utils/Helper";
 
-const VideoSection = ({ currentVideo, formatDate, likeHandler, videoId }) => {
+const VideoSection = ({ currentVideo, likeHandler, videoId }) => {
   const [like, setLike] = useState(false);
 
   const clickHandler = (e) => {
