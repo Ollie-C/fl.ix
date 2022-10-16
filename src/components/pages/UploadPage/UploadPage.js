@@ -16,30 +16,24 @@ const UploadPage = () => {
   const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-
-  const titleChangeHandler = (event) => {
-    setTitle(event.target.value);
-  };
-
-  const descriptionChangeHandler = (event) => {
-    setDescription(event.target.value);
-  };
+  const [error, setError] = useState("");
 
   const formSubmitHandler = async (e, title, description) => {
     e.preventDefault();
     const { data } = await axios.post(`${BASE_URL}videos`, {
       title: title,
       description: description,
+      timestamp: Date.now(),
     });
   };
 
   const submitHandler = (e) => {
     if (!isFormValid(title, description)) {
-      alert("Please fill in the form again.");
+      setError("Please fill in all fields.");
     }
+    setError(false);
     formSubmitHandler(e, title, description);
     alert("Upload was successful.");
-    document.location = "/";
   };
 
   return (
@@ -65,24 +59,22 @@ const UploadPage = () => {
             <input
               type="text"
               className={`upload__title global__input ${
-                isInputValid(title, 2, 15) ? "" : "global__input--error"
+                isInputValid(title, 15) ? "" : "global__input--error"
               }`}
               name="title"
               placeholder="Add a title to your video"
-              value={title}
-              onChange={titleChangeHandler}
+              onChange={(e) => setTitle(e.target.value)}
             />
             <label className="upload__label" htmlFor="description">
               ADD A VIDEO DESCRIPTION
             </label>
             <textarea
               className={`upload__description global__input ${
-                isInputValid(description, 5, 30) ? "" : "global__input--error"
+                isInputValid(description, 30) ? "" : "global__input--error"
               }`}
               name="description"
               placeholder="Add a description to your video"
-              value={description}
-              onChange={descriptionChangeHandler}
+              onChange={(e) => setDescription(e.target.value)}
             ></textarea>
           </div>
         </form>
@@ -93,7 +85,7 @@ const UploadPage = () => {
               className="upload__button global__button"
               type="submit"
               form="uploadform"
-              disabled={!isFormValid(title, description)}
+              // disabled={!isFormValid(title, description)}
             >
               PUBLISH
             </button>
@@ -102,6 +94,7 @@ const UploadPage = () => {
             CANCEL
           </p>
         </div>
+        {error && <p>{error}</p>}
       </article>
     </>
   );

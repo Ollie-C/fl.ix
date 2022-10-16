@@ -1,9 +1,8 @@
 // FORM VALIDATION
-const isInputValid = (input, min, max) => {
-  if (input.length < min || input.length > max) {
+const isInputValid = (input, max) => {
+  if (input.length > max) {
     return false;
-  }
-  return true;
+  } else return true;
 };
 
 const isFormValid = (inputA, inputB) => {

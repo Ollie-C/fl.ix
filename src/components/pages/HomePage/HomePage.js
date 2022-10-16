@@ -22,25 +22,17 @@ const HomePage = () => {
     const { data } = await axios.get(`${BASE_URL}videos/`);
     setVideos(data);
 
-    const current = data.find((video) => {
-      return video.id === videoId;
-    });
-    setCurrentVideo(current || data[0]);
-
-    // setVideoList(videosList);
-    // // Use ID to GET individual video details
-    // const video = await axios.get(
-    //   `${BASE_URL}videos/${videoId || videosList[0].id}?api_key=${API_KEY}`
-    // );
+    if (!videoId) {
+      setCurrentVideo(data[0]);
+    } else {
+      updateVideo(videoId);
+    }
   };
 
-  // //Update video upon clicking suggested video from list
-  // const updateVideo = async (videoId) => {
-  //   const updatedVideo = await axios.get(
-  //     `${BASE_URL}videos/${videoId}/?api_key=${API_KEY}`
-  // //   );
-
-  //   setVideoDetails(updatedVideo.data);
+  const updateVideo = async (videoId) => {
+    const { data } = await axios.get(`${BASE_URL}${videoId}`);
+    setCurrentVideo(data);
+  };
 
   useEffect(() => {
     getVideos();
@@ -49,11 +41,6 @@ const HomePage = () => {
   if (!currentVideo) {
     return <h2 className="loading">Loading. . .</h2>;
   }
-  // //Handlers
-  // const suggestedVideoClickHandler = (videoId) => {
-  //   console.log("not using");
-  //   // updateVideo(videoId);
-  // };
 
   const formatDate = (timestamp) => {
     const videoDate = new Date(timestamp);
@@ -70,7 +57,7 @@ const HomePage = () => {
             formatDate={formatDate}
           />
         </div>
-        <SuggestionsSection videos={videos} />
+        <SuggestionsSection videos={videos} videoId={videoId} />
       </main>
     </>
   );
