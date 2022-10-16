@@ -85,6 +85,26 @@
       line-height: 2.2rem;
     }
   }
+
+  &__delete {
+    position: absolute;
+    top: 5px;
+    right: 0px;
+    width: 15px;
+    opacity: 30%;
+    &:hover {
+      cursor: pointer;
+      opacity: 80%;
+    }
+    @include desktop {
+      right: 5px;
+    }
+  }
+
+  &__error {
+    margin-top: 1rem;
+    color: #d22d2d;
+  }
 }
 
 .comment-card {

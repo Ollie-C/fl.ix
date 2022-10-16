@@ -19,7 +19,10 @@ const HomePage = () => {
   const { videoId } = useParams();
 
   const getVideos = async () => {
-    const { data } = await axios.get(`${BASE_URL}videos/`);
+    const { data } = await axios.get(`${BASE_URL}`).catch((error) => {
+      alert(error.response.statusText);
+      console.log(error.response);
+    });
     setVideos(data);
 
     if (!videoId) {
@@ -31,23 +34,33 @@ const HomePage = () => {
 
   //UPDATE VIDEO PAGE
   const updateVideo = async (videoId) => {
-    const { data } = await axios.get(`${BASE_URL}${videoId}`);
+    const { data } = await axios
+      .get(`${BASE_URL}/${videoId}`)
+      .catch((error) => {
+        alert(error.response.statusText);
+        console.log(error.response);
+      });
     setCurrentVideo(data);
   };
 
   //NEW COMMENT
   const formSubmitHandler = async (e, comment) => {
     e.preventDefault();
-    const { data } = await axios.post(`${BASE_URL}${videoId}/comments`, {
-      comment: comment,
-    });
+    const currentId = !videoId ? videos[0].id : videoId;
+    const { data } = await axios
+      .post(`${BASE_URL}/${currentId}/comments`, {
+        comment: comment,
+      })
+      .catch((error) => {
+        console.log(error.response);
+      });
     getVideos();
   };
 
   //LIKES
   const likeHandler = async (e) => {
     e.preventDefault();
-    await axios.put(`${BASE_URL}${videoId}/likes`);
+    await axios.put(`${BASE_URL}/${videoId}/likes`);
     getVideos();
   };
 
@@ -72,6 +85,7 @@ const HomePage = () => {
             currentVideo={currentVideo}
             formatDate={formatDate}
             likeHandler={likeHandler}
+            videoId={videoId}
           />
           <CommentsSection
             currentVideo={currentVideo}

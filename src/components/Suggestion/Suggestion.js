@@ -4,7 +4,7 @@ import "./suggestion.scss";
 const Suggestion = ({ video }) => {
   return (
     <>
-      <NavLink to={`/videos/${video.id}`}>
+      <NavLink className="suggestions__link" to={`/videos/${video.id}`}>
         <article
           className="suggestions__card"
           onClick={() => {

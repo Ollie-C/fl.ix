@@ -1,4 +1,5 @@
 import "../CommentsSection/commentssection.scss";
+import deleteIcon from "../../assets/Icons/delete.svg";
 
 const Comment = ({ comment, formatDate }) => {
   return (
@@ -12,6 +13,12 @@ const Comment = ({ comment, formatDate }) => {
           <p className="comments__date">{formatDate(comment.timestamp)}</p>
         </div>
         <p className="comments__text">{comment.comment}</p>
+        <img
+          className="comments__delete"
+          src={deleteIcon}
+          alt="delete-comment"
+          onClick={() => alert("No idea")}
+        />
       </div>
     </article>
   );

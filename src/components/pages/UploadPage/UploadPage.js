@@ -8,7 +8,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 //HELPER
-import { isInputValid, isFormValid } from "../../../utils/Helper";
+import { isInputValid } from "../../../utils/Helper";
 //UTILS & HELPERS
 import { BASE_URL } from "../../../utils/API";
 
@@ -20,17 +20,33 @@ const UploadPage = () => {
 
   const formSubmitHandler = async (e, title, description) => {
     e.preventDefault();
-    const { data } = await axios.post(`${BASE_URL}videos`, {
-      title: title,
-      description: description,
-    });
+    const { data } = await axios
+      .post(`${BASE_URL}`, {
+        title: title,
+        description: description,
+      })
+      .catch((error) => {
+        alert(error.response.statusText);
+        console.log(error.response);
+      });
   };
 
   const submitHandler = (e) => {
-    if (!isFormValid(title, description)) {
+    e.preventDefault();
+    if (!title || !description) {
       setError("Please fill in all fields.");
+      return false;
     }
-    setError(false);
+    if (!isInputValid(title, 20)) {
+      setError("Title must be under 20 characters.");
+      return false;
+    }
+
+    if (!isInputValid(description, 50)) {
+      setError("Description must be under 50 characters.");
+      return false;
+    }
+
     formSubmitHandler(e, title, description);
     alert("Upload was successful.");
     navigate("/");
@@ -94,7 +110,7 @@ const UploadPage = () => {
             CANCEL
           </p>
         </div>
-        {error && <p>{error}</p>}
+        {error && <p className="upload__error">{error}</p>}
       </article>
     </>
   );

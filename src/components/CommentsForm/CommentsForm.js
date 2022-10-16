@@ -11,10 +11,16 @@ const CommentsForm = ({ formSubmitHandler }) => {
     e.preventDefault();
     if (!comment) {
       setError("Please enter a comment.");
-    } else {
-      setError(false);
-      formSubmitHandler(e, comment);
+      setComment("");
+      return false;
     }
+    if (!isInputValid(comment, 50)) {
+      setError("Comment cannot be longer than 50 characters.");
+      return false;
+    }
+    setError(false);
+    formSubmitHandler(e, comment);
+    setComment("");
   };
 
   return (
@@ -57,7 +63,7 @@ const CommentsForm = ({ formSubmitHandler }) => {
             </button>
           </div>
         </form>
-        {error && <p>{error}</p>}
+        {error && <p className="comments__error">{error}</p>}
       </div>
     </article>
   );

@@ -3,14 +3,13 @@ import logo from "../../assets/Logo/BrainFlix-logo.svg";
 import searchIcon from "../../assets/Icons/search.svg";
 import uploadIcon from "../../assets/Icons/upload.svg";
 import "./navbar.scss";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   return (
     <header className="header">
       <nav className="nav">
         <div className="nav__logo-wrapper">
-          {/* to link in next sprint */}
           <NavLink to="/">
             <img src={logo} alt="brainflix-logo" className="global__logo" />
           </NavLink>

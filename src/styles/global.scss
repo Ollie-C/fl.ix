@@ -80,6 +80,7 @@
 .section-wrapper {
   @include desktop {
     padding-top: 5rem;
+    width: 100%;
   }
 }
 .suggestions {

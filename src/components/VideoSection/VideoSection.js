@@ -2,20 +2,23 @@ import viewsIcon from "../../assets/Icons/views.svg";
 import likesIcon from "../../assets/Icons/likes.svg";
 import "./videosection.scss";
 import { useState } from "react";
+import { useEffect } from "react";
 
-const VideoSection = ({ currentVideo, formatDate, likeHandler }) => {
+const VideoSection = ({ currentVideo, formatDate, likeHandler, videoId }) => {
   const [like, setLike] = useState(false);
 
   const clickHandler = (e) => {
-    e.preventDefault();
     if (!like) {
-      likeHandler(e);
       setLike(true);
-      console.log("success");
-    } else {
-      console.log("fail");
+      likeHandler(e);
     }
   };
+
+  //Reset like button when changing video
+  useEffect(() => {
+    setLike(false);
+  }, [videoId]);
+
   return (
     <>
       <article className="description">
