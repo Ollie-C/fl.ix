@@ -60,7 +60,8 @@ const HomePage = () => {
   //LIKES
   const likeHandler = async (e) => {
     e.preventDefault();
-    await axios.put(`${BASE_URL}/${videoId}/likes`);
+    const currentId = !videoId ? videos[0].id : videoId;
+    await axios.put(`${BASE_URL}/${currentId}/likes`);
     getVideos();
   };
 
