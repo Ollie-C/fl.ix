@@ -1,6 +1,6 @@
 // FORM VALIDATION
 const isInputValid = (input, max) => {
-  if (input.length > max) {
+  if (input.length > max || input.length === 0) {
     return false;
   } else return true;
 };

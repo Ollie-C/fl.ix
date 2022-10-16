@@ -23,7 +23,6 @@ const UploadPage = () => {
     const { data } = await axios.post(`${BASE_URL}videos`, {
       title: title,
       description: description,
-      timestamp: Date.now(),
     });
   };
 
@@ -34,6 +33,7 @@ const UploadPage = () => {
     setError(false);
     formSubmitHandler(e, title, description);
     alert("Upload was successful.");
+    navigate("/");
   };
 
   return (

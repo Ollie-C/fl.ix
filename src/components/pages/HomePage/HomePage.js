@@ -29,9 +29,19 @@ const HomePage = () => {
     }
   };
 
+  //UPDATE VIDEO PAGE
   const updateVideo = async (videoId) => {
     const { data } = await axios.get(`${BASE_URL}${videoId}`);
     setCurrentVideo(data);
+  };
+
+  //NEW COMMENT
+  const formSubmitHandler = async (e, comment) => {
+    e.preventDefault();
+    const { data } = await axios.post(`${BASE_URL}${videoId}/comments`, {
+      comment: comment,
+    });
+    getVideos();
   };
 
   useEffect(() => {
@@ -55,6 +65,7 @@ const HomePage = () => {
           <CommentsSection
             currentVideo={currentVideo}
             formatDate={formatDate}
+            formSubmitHandler={formSubmitHandler}
           />
         </div>
         <SuggestionsSection videos={videos} videoId={videoId} />
